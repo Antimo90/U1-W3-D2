@@ -81,89 +81,298 @@
     </footer>
     <script>
       /* ESERCIZIO 1
-       Scrivi una funzione per cambiare il titolo della pagina in qualcos'altro
-    */
+           Scrivi una funzione per cambiare il titolo della pagina in qualcos'altro
+        */
 
-      const changeTitle = function () {}
+      const changeTitle = function () {
+        const pageTitle = document.querySelector("h1");
+        pageTitle.innerText = "Nuovo Titolo della Pagina";
+      };
+      changeTitle();
 
       /* ESERCIZIO 2
-       Scrivi una funzione per aggiungere al titolo della pagina una classe "myHeading"
-    */
+           Scrivi una funzione per aggiungere al titolo della pagina una classe "myHeading"
+        */
 
-      const addClassToTitle = function () {}
+      const addClassToTitle = function () {
+        const pageTitle = document.querySelector("h1");
+        pageTitle.classList.add("myHeading");
+      };
+      addClassToTitle();
 
       /* ESERCIZIO 3
-       Scrivi una funzione che cambi il testo dei p figli di un div
-      */
+           Scrivi una funzione che cambi il testo dei p figli di un div
+          */
 
-      const changePcontent = function () {}
+      const changePcontent = function () {
+        const allDivs = document.querySelectorAll("div");
+        allDivs.forEach((div) => {
+          const paragraphs = div.querySelectorAll("p");
+          paragraphs.forEach((p) => {
+            p.textContent = "Testo modificato dall'Esercizio 3!"; // Cambia il testo del paragrafo
+          });
+        });
+      };
+      changePcontent();
 
       /* ESERCIZIO 4
-       Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
-      */
+           Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
+          */
 
-      const changeUrls = function () {}
+      const changeUrls = function () {
+        const allLinks = document.querySelectorAll("a");
+        const footerLink = document.querySelector("footer a");
+        allLinks.forEach((link) => {
+          if (link !== footerLink) {
+            link.href = "https://www.google.com";
+          }
+        });
+      };
+      changeUrls();
 
       /* ESERCIZIO 5
-       Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
-    */
+           Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
+        */
 
-      const addToTheSecond = function () {}
+      const addToTheSecond = function () {
+        const secondList = document.getElementById("secondList");
+        if (secondList) {
+          const newItem = document.createElement("li");
+          newItem.textContent = "4rd!";
+          secondList.appendChild(newItem);
+        }
+      };
+      addToTheSecond();
 
       /* ESERCIZIO 6
-       Scrivi una funzione che aggiunga un paragrafo al primo div
-    */
+           Scrivi una funzione che aggiunga un paragrafo al primo div
+        */
 
-      const addParagraph = function () {}
+      const addParagraph = function () {
+        const firstDiv = document.querySelector("div");
+        if (firstDiv) {
+          const newParagraph = document.createElement("p");
+          newParagraph.textContent =
+            "Questo è un nuovo paragrafo aggiunto al primo div dall'Esercizio 6.";
+          firstDiv.appendChild(newParagraph);
+        }
+      };
+      addParagraph();
 
       /* ESERCIZIO 7
-       Scrivi una funzione che faccia scomparire la prima lista non ordinata
-    */
+           Scrivi una funzione che faccia scomparire la prima lista non ordinata
+        */
 
-      const hideFirstUl = function () {}
+      const hideFirstUl = function () {
+        const firstList = document.getElementById("firstList");
+        firstList.style.display = "none";
+      };
+      hideFirstUl();
+      /* ESERCIZIO 8
+           Scrivi una funzione che renda verde il background di ogni lista non ordinata
+          */
 
-      /* ESERCIZIO 8 
-       Scrivi una funzione che renda verde il background di ogni lista non ordinata
-      */
-
-      const paintItGreen = function () {}
+      const paintItGreen = function () {
+        const allUls = document.querySelectorAll("ul");
+        allUls.forEach((ul) => {
+          ul.style.backgroundColor = "green";
+        });
+      };
+      paintItGreen();
 
       /* ESERCIZIO 9
-       Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
-      */
+           Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
+          */
 
-      const makeItClickable = function () {}
+      const makeItClickable = function () {
+        const h1Element = document.querySelector("h1");
+        if (h1Element) {
+          h1Element.addEventListener("click", function () {
+            let currentText = h1Element.textContent;
+            if (currentText.length > 0) {
+              h1Element.textContent = currentText.slice(0, -1);
+            } else {
+              console.log("Il titolo è vuoto.");
+            }
+          });
+        }
+      };
+      makeItClickable();
 
       /* ESERCIZIO 10
-       Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
-      */
+           Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
+          */
 
-      const revealFooterLink = function () {}
+      const revealFooterLink = function () {
+        const footerElement = document.querySelector("footer");
+        const footerLink = document.querySelector("footer a");
+        if (footerElement && footerLink) {
+          footerElement.addEventListener("click", function () {
+            const linkUrl = footerLink.href;
+            alert("L'URL del link nel footer è: " + linkUrl);
+          });
+        }
+      };
+      revealFooterLink();
 
       /* ESERCIZIO 11
-       Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
-       La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
-    */
+           Crea una funzione che crei una tabella nell'elemento con id "tableArea".
+           La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
+        */
 
-      const generateTable = function () {}
+      const generateTable = function () {
+        const tableArea = document.getElementById("tableArea");
+        const table = document.createElement("table");
+        table.style.width = "100%";
+        table.style.borderCollapse = "collapse";
+        table.style.marginTop = "20px";
+
+        const headerRow = table.insertRow();
+        const headers = ["Immagine", "Nome Prodotto", "Quantità", "Prezzo"];
+
+        headers.forEach((headerText) => {
+          const th = document.createElement("th");
+          th.textContent = headerText;
+          th.style.border = "1px solid #ddd";
+          th.style.padding = "8px";
+          th.style.textAlign = "left";
+          th.style.backgroundColor = "#f2f2f2";
+          headerRow.appendChild(th);
+        });
+
+        const products = [
+          {
+            img: "https://via.placeholder.com/50",
+            name: "Smartphone X",
+            qty: 1,
+            price: 899.99,
+          },
+          {
+            img: "https://via.placeholder.com/50",
+            name: "Cuffie Bluetooth",
+            qty: 2,
+            price: 79.5,
+          },
+          {
+            img: "https://via.placeholder.com/50",
+            name: "Smartwatch Basic",
+            qty: 3,
+            price: 120.0,
+          },
+          {
+            img: "https://via.placeholder.com/50",
+            name: "Power Bank",
+            qty: 5,
+            price: 29.99,
+          },
+          {
+            img: "https://via.placeholder.com/50",
+            name: "Altoparlante Portatile",
+            qty: 1,
+            price: 55.0,
+          },
+        ];
+
+        products.forEach((product) => {
+          const row = table.insertRow();
+          const imgCell = row.insertCell();
+          const img = document.createElement("img");
+          img.src = product.img;
+          img.alt = product.name;
+          img.style.width = "50px";
+          img.style.height = "50px";
+          img.style.objectFit = "cover";
+          imgCell.appendChild(img);
+          imgCell.style.border = "1px solid #ddd";
+          imgCell.style.padding = "8px";
+          const nameCell = row.insertCell();
+          nameCell.textContent = product.name;
+          nameCell.style.border = "1px solid #ddd";
+          nameCell.style.padding = "8px";
+          const qtyCell = row.insertCell();
+          qtyCell.textContent = product.qty;
+          qtyCell.style.border = "1px solid #ddd";
+          qtyCell.style.padding = "8px";
+          const priceCell = row.insertCell();
+          priceCell.textContent = product.price.toFixed(2) + " €";
+          priceCell.style.border = "1px solid #ddd";
+          priceCell.style.padding = "8px";
+        });
+
+        tableArea.appendChild(table);
+      };
+      generateTable();
 
       /* ESERCIZIO 12
-       Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
-    */
+           Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
+        */
 
-      const addRow = function () {}
+      const addRow = function (imageSrc, productName, quantity, price) {
+        const tableArea = document.getElementById("tableArea");
+        const table = tableArea.querySelector("table");
+        if (!table) {
+          console.error(
+            "Errore: La tabella non è stata trovata nell'elemento 'tableArea'. Assicurati che l'Esercizio 11 sia stato eseguito."
+          );
+          return;
+        }
+        const newRow = table.insertRow();
+        const imgCell = newRow.insertCell();
+        const nameCell = newRow.insertCell();
+        const quantityCell = newRow.insertCell();
+        const priceCell = newRow.insertCell();
+        if (imageSrc) {
+          const img = document.createElement("img");
+          img.src = imageSrc;
+          img.alt = productName || "Immagine Prodotto";
+          img.style.width = "50px";
+          img.style.height = "50px";
+          img.style.objectFit = "cover";
+          imgCell.appendChild(img);
+        }
+        nameCell.textContent = productName;
+        quantityCell.textContent = quantity;
+        priceCell.textContent = price.toFixed(2) + " €";
+        [imgCell, nameCell, quantityCell, priceCell].forEach((cell) => {
+          cell.style.border = "1px solid #ddd";
+          cell.style.padding = "8px";
+        });
+      };
+      addRow(
+        "https://via.placeholder.com/50/FFD700",
+        "Nuovo Telefono Oro",
+        1,
+        999.99
+      );
 
       /* ESERCIZIO 14
-      Crea una funzione che nasconda le immagini della tabella quando eseguita
-    */
+          Crea una funzione che nasconda le immagini della tabella quando eseguita
+        */
 
-      const hideAllImages = function () {}
+      const hideAllImages = function () {
+        const tableImages = document.querySelectorAll("#tableArea img");
+        tableImages.forEach((img) => {
+          img.style.display = "none";
+        });
+      };
+      hideAllImages();
 
       /* EXTRA ESERCIZIO 15
-      Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
-    */
+          Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
+        */
 
-      const changeColorWithRandom = function () {}
+      const changeColorWithRandom = function () {
+        const h2Element = document.getElementById("changeMyColor");
+        h2Element.addEventListener("click", function () {
+          const randomColor =
+            "#" +
+            Math.floor(Math.random() * 0xffffff)
+              .toString(16)
+              .padStart(6, "0");
+          this.style.color = randomColor;
+        });
+      };
+      changeColorWithRandom();
     </script>
   </body>
 </html>
